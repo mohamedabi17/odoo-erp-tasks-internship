@@ -44,6 +44,10 @@ wTourUtils.registerWebsitePreviewTour('add_to_cart_snippet_tour', {
         ...wTourUtils.selectElementInWeSelectWidget('action_picker_opt', 'Buy Now'),
         ...wTourUtils.clickOnSave(),
         wTourUtils.clickOnElement('add to cart button', 'iframe .s_add_to_cart_btn'),
+        {
+            trigger: "body",
+            isCheck: true,  // wait for the page to load, as the next check was sometimes too fast
+        },
         wTourUtils.assertPathName('/shop/payment', 'iframe a[href="/shop/cart"]'),
 
         wsTourUtils.goToCart({quantity: 4, backend: true}),
